@@ -1,0 +1,66 @@
+body {
+    background: url('./../images/darkbackground.jpg') no-repeat fixed center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.blur-overlay {
+    position: fixed;
+    filter: blur(4px);
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}
+
+.main {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    color: white;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    background-color: rgba(40, 56, 78, 0.233);
+}
+
+.main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(10px) saturate(2);
+}
+
+.main-menu {
+    position: relative;
+    z-index: 1;
+    width: 400px;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 6px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.main-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(10px) saturate(2);
+}
+
+.main-menu-background {
+    background-color: rgba(21, 27, 36, 0.685);
+    height: 100%;
+    width: 100%;
+}
