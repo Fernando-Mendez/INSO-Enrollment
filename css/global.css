@@ -51,8 +51,11 @@ html, body {
 }
 
 .list-format img {
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
+}
+.list-format li{
+    margin: 20px 0;
 }
 
 .main-left {
@@ -66,10 +69,6 @@ html, body {
     margin: 30px 80px;
 }
 
-.semester-dropdown {
-    margin-right: 20px;
-}
-
 .semester-container {
     position: relative;
 }
@@ -78,6 +77,10 @@ html, body {
     position: absolute;
     height: 20px;
     width: 20px;
+}
+
+.semester-dropdown {
+    margin-right: 20px;
 }
 
 .search-bar {
@@ -101,6 +104,7 @@ html, body {
     width: 120px;
     height: 40px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .search-container select {
@@ -117,4 +121,20 @@ html, body {
     -webkit-appearance:none; /* Safari and Chrome */
     appearance:none;
     
+}
+
+.enrollment-table {
+    width: 100%;
+    margin: 100px 30px;
+    border: none;
+}
+
+.enrollment-table th {
+    background-color: white;
+    height: 60px;
+}
+
+.enrollment-table td {
+    background-color: white;
+    height: 60px;
 }
