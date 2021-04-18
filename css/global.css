@@ -1,66 +1,120 @@
-body {
-    background: url('./../images/darkbackground.jpg') no-repeat fixed center;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+html, body {
     margin: 0;
     padding: 0;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.blur-overlay {
-    position: fixed;
-    filter: blur(4px);
-    height: 100vh;
-    width: 100vw;
-    z-index: 1;
+.background-back{
+    position: relative;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #DCE0EB;
 }
 
 .main {
     position: relative;
     display: flex;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
+    background-color: #F4F5F7;
     z-index: 2;
-    color: white;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 6px;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-    background-color: rgba(40, 56, 78, 0.233);
-}
-
-.main::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: inherit;
-    filter: blur(10px) saturate(2);
 }
 
 .main-menu {
+    background-color: white;
     position: relative;
-    z-index: 1;
-    width: 400px;
     height: 100%;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 6px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    width: 350px;
 }
 
-.main-menu::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: inherit;
-    filter: blur(10px) saturate(2);
+.upr-icon {
+    display: flex;
+    height: 50px;
 }
 
-.main-menu-background {
-    background-color: rgba(21, 27, 36, 0.685);
-    height: 100%;
+.upr-icon img {
+    height: 20px;
+    width: 20px;
+}
+
+.list-format {
+    list-style: none;
+}
+
+.list-format img {
+    height: 20px;
+    width: 20px;
+}
+
+.main-left {
     width: 100%;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    margin: 30px 80px;
+}
+
+.semester-dropdown {
+    margin-right: 20px;
+}
+
+.semester-container {
+    position: relative;
+}
+
+.semester-container img {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+}
+
+.search-bar {
+    margin-right: 20px;
+}
+
+.search-bar input {
+    background-color: white;
+    border: none;
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    padding-left: 20px;
+}
+
+.search-container button {
+    background: transparent;
+    background-color: #0053D3;
+    color: white;
+    border: none;
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.search-container select {
+    background: transparent;
+    background-color: white;
+    color: black;
+    border: none;
+    width: 320px;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    
 }
