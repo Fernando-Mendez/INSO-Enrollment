@@ -6,6 +6,7 @@
     --blue-color: #0053D3;
 }
 
+
 html, body {
     margin: 0;
     padding: 0;
@@ -35,11 +36,14 @@ html, body {
     z-index: 2;
     border-radius: 15px;
     overflow: hidden;
+    box-shadow: -5px 55px 96px -41px rgb(0 0 0 / 67%);
+    -webkit-box-shadow: -5px 55px 96px -41px rgb(0 0 0 / 67%);
+    -moz-box-shadow: -5px 55px 96px -41px rgb(0 0 0 / 67%);
 }
 
 .main-menu {
-    background-color: white;
     position: relative;
+    background-color: white;
     height: 100%;
     width: 350px;
 }
@@ -71,7 +75,7 @@ html, body {
     display: flex;
     padding: 20px 0;
     cursor: pointer;
-    border-right: 2px solid white;
+    border-right: 3px solid white;
     transition: border-right .3s ease-in-out;
 }
 
@@ -81,7 +85,8 @@ html, body {
 }
 
 
-.main-left {
+.main-right {
+    position: relative;
     box-sizing: border-box;
     width: 100%;
 }
@@ -153,38 +158,90 @@ html, body {
 .search-bar input:focus{ outline: none; }
 
 .table-padding {
+    position: relative;
+    display: block;
     padding: 100px 30px;
+    height: calc(100% - 100px);
+    box-sizing: border-box;
 }
 
 .enrollment-table {
+    position: relative;
+    width:100%;
     table-layout: fixed;
-    width: 100%;
     white-space: nowrap;
     border: none;
     border-radius: 20px;
     overflow: hidden;
+    text-align: center;
+    height: 100%;
 }
 
-.enrollment-table th {
-    background-color: white;
+.enrollment-table tr {
     height: 60px;
 }
 
-.enrollment-table td {
-    background-color: white;
-    height: 60px;
+.enrollment-table-body  {
+    position: relative;
+    display: block;
+    height:100%;
+    overflow:auto;
+    border-bottom-left-radius: 20px;
 }
+
+.enrollment-table > thead, .enrollment-table-body  tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    background-color: white;
+}
+
+.enrollment-table > thead {
+    width: calc( 100% - 1em )
+}
+
+.enrollment-table-body td {
+    overflow: hidden;
+}
+  
 
 /* Column widths are based on these cells */
-.row-course {
+
+.col-no, tbody td:nth-child(1){
     width: 10%;
 }
-.row-description {
+
+.col-course, tbody td:nth-child(2) {
+    width: 10%;
+}
+.col-description, tbody td:nth-child(3) {
     width: 40%;
 }
-.row-pre {
-    width: 30%;
+.col-pre , tbody td:nth-child(4) {
+    width: 15%;
 }
-.row-co {
-    width: 20%;
+.col-co, tbody td:nth-child(5){
+    width: 15%;
+}
+
+.col-met, tbody td:nth-child(6) {
+    width: 10%;
+}
+
+.row-header {
+    border-bottom: 2px solid var(--main-color);
+}
+
+.side-menu-hidden {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0px 1px 35px -11px rgba(0,0,0,0.67);
+    -webkit-box-shadow: 0px 1px 35px -11px rgba(0,0,0,0.67);
+    -moz-box-shadow: 0px 1px 35px -11px rgba(0,0,0,0.67);
+    transform: translateX(110%);
+    transition: transform .5s ease-in-out;
 }
