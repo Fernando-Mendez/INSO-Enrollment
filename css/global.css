@@ -71,12 +71,18 @@ html, body {
     width: 30px;
     margin-right: 20px;
 }
+.list-format svg{
+    height: 30px;
+    width: 30px !important;
+    margin-right: 20px;
+}
 .list-format li{
     display: flex;
     padding: 20px 0;
     cursor: pointer;
     border-right: 3px solid white;
     transition: border-right .3s ease-in-out;
+    align-items: center;
 }
 
 .list-format li:hover{
@@ -196,9 +202,6 @@ html, body {
     background-color: white;
 }
 
-.enrollment-table > thead {
-    width: calc( 100% - 1em )
-}
 
 .enrollment-table-body td {
     overflow: hidden;
@@ -207,24 +210,24 @@ html, body {
 
 /* Column widths are based on these cells */
 
-.col-no, tbody td:nth-child(1){
+.col-no{
     width: 10%;
 }
 
-.col-course, tbody td:nth-child(2) {
+.col-course{
     width: 10%;
 }
-.col-description, tbody td:nth-child(3) {
+.col-description{
     width: 40%;
 }
-.col-pre , tbody td:nth-child(4) {
+.col-pre{
     width: 15%;
 }
-.col-co, tbody td:nth-child(5){
+.col-co{
     width: 15%;
 }
 
-.col-met, tbody td:nth-child(6) {
+.col-met{
     width: 10%;
 }
 
