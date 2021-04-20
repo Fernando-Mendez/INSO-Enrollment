@@ -20,13 +20,17 @@ class Serv(BaseHTTPRequestHandler):
         header_elements = '''</title>
         <link rel="stylesheet" href="./css/global.css">
         <link rel="stylesheet" href="{0}">
-        <script src="{1}"></script>
         '''
-        file_to_open = file_to_open.replace('</title>', header_elements.format(cssFile, jsFile))
+        file_to_open = file_to_open.replace('</title>', header_elements.format(cssFile))
         # open file based on path.
         file_to_open += open( htmlFile ).read()
         # file_to_open += echo(self)
+        footer_elements = '''
+        <script src="{0}"></script>
+        </body>
+        '''
         file_to_open += open('component/footer.html').read()
+        file_to_open = file_to_open.replace('</body>', footer_elements.format(jsFile))
         return file_to_open
     
     def openResource(self, File ):
@@ -56,13 +60,18 @@ class Serv(BaseHTTPRequestHandler):
     # @overwrite
     def do_POST(self):
         # ""database"" part
-        with open('data/database.json') as json_file:
-            data = json.load(json_file)
-            for key in data:
-                print('Name: ' + data[key]['data'])
-        data['math']['this'] = "sdlfhdflkkls"
-        with open('data/database.json', 'w') as outfile:
-            json.dump(data, outfile, indent=2)
+        router_path = self.path
+        if router_path.endswith('search'):
+            with open('data/courses.json') as json_file:
+                data = json.load(json_file)
+                # for key in data:
+                #     print('Name: ' + data[key]['data'])
+            # data['math']['this'] = "sdlfhdflkkls"
+            # with open('data/courses.json', 'w') as outfile:
+            #     json.dump(data, outfile, indent=2)
+            print(json.dumps(data))
+            self._set_headers()
+            self.wfile.write(bytes(json.dumps(data),'utf-8'))
         # # file_to_open = self.routing()
         # content_len = int(self.headers.get('Content-Length'))
         # print(self.rfile.read(content_len))
@@ -87,8 +96,6 @@ class Serv(BaseHTTPRequestHandler):
         # # self.wfile.write(json.dumps(message))
         # # self.wfile.write(bytes(file_to_open,'utf-8'))
         # self.wfile.write(json.dumps({'hello': 'world', 'received': 'ok'}))
-        self._set_headers()
-        self.wfile.write(bytes(json.dumps({'hello': 'world', 'received': 'ok'}),'utf-8'))
 
 class bcolors:
     OK = '\033[92m' #GREEN
