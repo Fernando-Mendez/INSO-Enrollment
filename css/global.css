@@ -56,6 +56,15 @@ html, body {
     border-bottom: 2px solid var(--main-color);
 }
 
+.upr-icon.close{
+    justify-content: space-between;
+}
+
+.upr-icon.close svg{
+    height: 30px;
+    width: 30px !important;
+}
+
 .upr-icon img {
     height: 40px;
     width: 40px;
@@ -190,6 +199,7 @@ html, body {
 .scrolling-device{
     height: 100%;
     overflow: auto;
+    margin-top: 8px;
 }
 
 .enrollment-table-body  {
@@ -198,6 +208,10 @@ html, body {
     overflow:hidden;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+.enrollment-table-body tr {
+    height: 60px;
 }
 
 .enrollment-table > thead, .enrollment-table-body  tr {
@@ -209,8 +223,12 @@ html, body {
 
 
 .enrollment-table-body td {
+    padding: 0 30px;
+    box-sizing: border-box;
     text-align: center;
-    overflow: hidden;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
 }
   
 
@@ -253,4 +271,9 @@ html, body {
     -moz-box-shadow: 0px 1px 35px -11px rgba(0,0,0,0.67);
     transform: translateX(110%);
     transition: transform .5s ease-in-out;
+    z-index: 3;
+}
+
+.side-menu-hidden.open {
+    transform: translateX(0);
 }
