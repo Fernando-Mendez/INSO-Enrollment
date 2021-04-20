@@ -4,20 +4,20 @@
     "concentration": "MATE",
     "description": "Quisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.",
     "Prereq": ["MATE3010"],
-    "Coreq": []
+    "Coreq": ["ININ4010"]
   },
   "MATE3010": {
     "ID":3010,
     "concentration": "MATE",
     "description": "INTRODUCCION A LOS FUNDAMENTOS DE LA MATEMATICA",
-    "Prereq": ["",""],
+    "Prereq": [],
     "Coreq": []
   },
   "MATE3030": {
     "ID":3030,
     "concentration": "MATE",
     "description": "Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-    "Prereq": ["MATE3030"],
+    "Prereq": ["MATE3030", "ININ4010"],
     "Coreq": []
   },
   "INSO2000": {
