@@ -1,6 +1,15 @@
 {
     "MATE": {
-        "courses": ["wekjbj", "sldkfnsd"]
+        "courses": [
+            {
+                "coursename":"MATE3020",
+                "met":true 
+            },
+            {
+                "coursename":"MATE3030",
+                "met":true 
+            }
+        ]
     },
     "INSO": {
         "courses": ["wekjbj", "sldkfnsd"]
