@@ -176,7 +176,7 @@ html, body {
     position: relative;
     display: block;
     padding: 0px 30px;
-    height: calc(100% - 100px);
+    height: calc(100% - 200px);
     box-sizing: border-box;
 }
 
@@ -263,7 +263,7 @@ html, body {
     position: fixed;
     top: 0;
     right: 0;
-    width: 400px;
+    width: 1000px;
     height: 100%;
     background-color: white;
     box-shadow: 0px 1px 35px -11px rgba(0,0,0,0.67);
@@ -276,4 +276,59 @@ html, body {
 
 .side-menu-hidden.open {
     transform: translateX(0);
+}
+
+#close-button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: none;
+}
+
+.curriculum-table {
+    position: relative;
+    width:100%;
+    table-layout: fixed;
+    white-space: nowrap;
+    border: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.curriculum-table tr {
+    height: 60px;
+}
+
+.curriculum-table-body  {
+    width: 100%;
+    position: relative;
+    overflow:hidden;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.curriculum-table-body tr {
+    height: 60px;
+}
+
+.curriculum-table > thead, .enrollment-table-body  tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    background-color: white;
+}
+
+
+.curriculum-table-body td {
+    padding: 0 30px;
+    box-sizing: border-box;
+    text-align: center;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
 }
