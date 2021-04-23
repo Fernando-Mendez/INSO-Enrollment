@@ -5,7 +5,8 @@
     "description": "CALCULO 1",
     "prereq": ["MATE3035"],
     "coreq": [""],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
   "MATE3032": {
     "ID":3032,
@@ -13,7 +14,8 @@
     "description": "CALCULO 2",
     "prereq": ["MATE3031"],
     "coreq": [],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
   "MATE3063": {
     "ID":3063,
@@ -21,7 +23,8 @@
     "description": "CALCULO 3",
     "prereq": ["MATE3032"],
     "coreq": [],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
   "MATE4145": {
     "ID":3063,
@@ -29,7 +32,8 @@
     "description": "LINEAR ALGEBRA AND DIFFERENTIAL EQUATIONS",
     "prereq": ["MATE3063", "INGE 3016"],
     "coreq": [],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
   "QUIM3131": {
     "ID": 3131,
@@ -37,14 +41,17 @@
     "description":"GENERAL CHEMISTRY 1",
     "prereq": ["MATE3171"],
     "coreq": ["QUIM3133"],
-    "semester": ""
-  },"QUIM3133": {
+    "semester": "",
+    "demand": 0
+  },
+  "QUIM3133": {
     "ID": 3131,
     "concentration": "QUIM",
     "description":"GENERAL CHEMISTRY 1: LAB",
     "prereq": ["MATE3171"],
     "coreq": ["QUIM3131"],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
   "QUIM3132": {
     "ID": 3131,
@@ -52,14 +59,17 @@
     "description":"GENERAL CHEMISTRY 2",
     "prereq": ["QUIM3131", "QUIM3133"],
     "coreq": ["QUIM3134"],
-    "semester": ""
-  },"QUIM3134": {
+    "semester": "",
+    "demand": 0
+  },
+  "QUIM3134": {
     "ID": 3131,
     "concentration": "QUIM",
     "description":"GENERAL CHEMISTRY 2: LAB",
     "prereq": ["QUIM3131", "QUIM3133"],
     "coreq": ["QUIM3132"],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
   "FISI3171": {
     "ID": 3171,
@@ -67,7 +77,8 @@
     "description":"PHYSICS 1",
     "prereq": ["MATE3031"],
     "coreq": [""],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
   "FISI3173": {
     "ID": 3173,
@@ -75,7 +86,8 @@
     "description":"PHYSICS 1: LAB",
     "prereq": [""],
     "coreq": ["FISI3171"],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
   "FISI3172": {
     "ID": 3172,
@@ -83,7 +95,8 @@
     "description":"PHYSICS 2",
     "prereq": ["FISI3171"],
     "coreq": [""],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
   "FISI3174": {
     "ID": 3174,
@@ -91,54 +104,142 @@
     "description":"PHYSICS 2: LAB",
     "prereq": ["FISI3173"],
     "coreq": ["FISI3172"],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
-  "INSO4101":{
-    "ID": 4101,
-    "concentration": "INSO",
-    "description": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.\n\nCras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n\nProin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+  "CIIC3011":{
+    "ID": 3011,
+    "concentration": "CIIC",
+    "description": "INTRO. TO COMPUTER PROGRAMMING 1",
     "prereq": [],
     "coreq": [],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
-  "INSO4102":{
-    "ID": 4102,
-    "concentration": "INSO",
-    "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.\n\nDuis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.",
-    "prereq": [],
+  "CIIC4010":{
+    "ID": 4010,
+    "concentration": "CIIC",
+    "description": "ADVANCED PROGRAMMING",
+    "prereq": ["CIIC3011"],
     "coreq": [],
-    "semester": ""
+    "semester": "",
+    "demand": 0
+  },
+  "CIIC3075":{
+    "ID": 3075,
+    "concentration": "CIIC",
+    "description": "FOUNDATIONS OF COMPUTING",
+    "prereq": ["CIIC3011"],
+    "coreq": ["MATE3031"],
+    "semester": "",
+    "demand": 0
   },
   "CIIC4020":{
     "ID": 4020,
     "concentration": "CIIC",
-    "description": "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",
+    "description": "DATA STRUCTURES",
+    "prereq": ["CIIC4010", "CIIC3075", "MATE3031"],
+    "coreq": [],
+    "semester": "",
+    "demand": 0
+  },
+  "INGE3011":{
+    "ID": 3011,
+    "concentration": "INGE",
+    "description": "ENGINEERING GRAPHICS",
     "prereq": [],
     "coreq": [],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
-  "CIIC4030":{
-    "ID": 4030,
+  "INEL3105":{
+    "ID":3105,
+    "concentration": "INEL",
+    "description": "ELECTRICAL SYSTEMS ANALYSIS 1",
+    "prereq": ["MATE3032"],
+    "coreq": ["MATE3063", "FISI3172"],
+    "semester": "",
+    "demand": 0
+  },
+  "INEL4115":{
+    "ID":4115,
+    "concentration": "INEL",
+    "description": "ELECTRICAL MEASUREMENT LAB",
+    "prereq": ["INEL3105"],
+    "coreq": [],
+    "semester": "",
+    "demand": 0
+  },
+  "INSO4101":{
+    "ID":4101,
+    "concentration": "INSO",
+    "description": "INTRO. TO SOFTWARE ENGINEERING",
+    "prereq": ["CIIC4020"],
+    "coreq": [],
+    "semester": "",
+    "demand": 0
+  },
+  "CIIC3081":{
+    "ID":3081,
     "concentration": "CIIC",
-    "description": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
-    "prereq": [],
+    "description": "COMPUTER ARCHITECTURE 1",
+    "prereq": ["INEL3105", "CIIC4010"],
     "coreq": [],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
-  "CIIC4040":{
-    "ID": 4040,
+  "INGE3035":{
+    "ID":3035,
+    "concentration": "INGE",
+    "description": "ENGINEERING MECHANICS",
+    "prereq": ["MATE3031"],
+    "coreq": ["FISI3171"],
+    "semester": "",
+    "demand": 0
+  },
+  "CIIC4025":{
+    "ID":4025,
     "concentration": "CIIC",
-    "description": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
-    "prereq": [],
+    "description": "ALGORITHM DESIGN AND ANALYSIS",
+    "prereq": ["CIIC4020"],
     "coreq": [],
-    "semester": ""
+    "semester": "",
+    "demand": 0
   },
-  "ESPA3001":{
-    "ID":3001,
-    "concentration": "ESPA",
-    "description": "Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.",
-    "prereq": [],
+  "CIIC4082":{
+    "ID":4082,
+    "concentration": "CIIC",
+    "description": "COMPUTER ARCHITECTURE 2",
+    "prereq": ["CIIC3081"],
     "coreq": [],
-    "semester": ""
+    "semester": "",
+    "demand": 0
+  },
+  "INGE3045":{
+    "ID":3045,
+    "concentration": "INGE",
+    "description": "ENGINEERING MATERIALS",
+    "prereq": ["QUIM3132", "QUIM3134", "FISI3172"],
+    "coreq": [],
+    "semester": "",
+    "demand": 0
+  },
+  "ININ4010":{
+    "ID":4010,
+    "concentration": "ININ",
+    "description": "ENGINEERING PROBABILITY AND STATISTICS",
+    "prereq": ["QUIM3132",  "MATE3032"],
+    "coreq": [],
+    "semester": "",
+    "demand": 0
+  },
+  "CIIC4050":{
+    "ID":4050,
+    "concentration": "CIIC",
+    "description": "OPERATING SYSTEMS",
+    "prereq": ["CIIC4020", "CIIC82"],
+    "coreq": [],
+    "semester": "",
+    "demand": 0
   }
 }
