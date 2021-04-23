@@ -61,8 +61,20 @@ class Serv(BaseHTTPRequestHandler):
     def do_POST(self):
         # ""database"" part
         router_path = self.path
-        if router_path.endswith('search'):
+        if router_path.endswith('courses'):
             with open('data/courses.json') as json_file:
+                data = json.load(json_file)
+                # for key in data:
+                #     print('Name: ' + data[key]['data'])
+            # data['math']['this'] = "sdlfhdflkkls"
+            # with open('data/courses.json', 'w') as outfile:
+            #     json.dump(data, outfile, indent=2)
+            print(json.dumps(data))
+            self._set_headers()
+            self.wfile.write(bytes(json.dumps(data),'utf-8'))
+
+        if router_path.endswith('curriculum'):
+            with open('data/curriculum.json') as json_file:
                 data = json.load(json_file)
                 # for key in data:
                 #     print('Name: ' + data[key]['data'])
@@ -102,7 +114,7 @@ class bcolors:
     RESET = '\033[0m' #RESET COLOR
 
 # Set server settings
-host = '10.0.0.85'
+host = '10.0.0.8'
 port = 3000
 
 # Set terminal message for developer
