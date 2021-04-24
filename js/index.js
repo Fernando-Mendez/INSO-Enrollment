@@ -98,7 +98,7 @@ const getCurriculum = async ()=>{
                     <td>${globalCourses[course.ID].description}</td>
                     <td>${globalCourses[course.ID].prereq.join(", ")}</td>
                     <td>${globalCourses[course.ID].coreq.join(", ")}</td>
-                    <td></td>
+                    <td><input type="checkbox"> </td>
                 </tr>`;
                 }
             }
@@ -109,7 +109,7 @@ const getCurriculum = async ()=>{
                         <td>${course.ID} Elective</td>
                         <td> --- </td>
                         <td> --- </td>
-                        <td> --- </td>
+                        <td> <input type="checkbox"> </td>
                     </tr>`
             }
         })
