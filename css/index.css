@@ -30,6 +30,7 @@
 
 .enrollment-table-body  {
     width: 100%;
+    table-layout: fixed;
     position: relative;
     overflow:hidden;
     border-bottom-left-radius: 20px;

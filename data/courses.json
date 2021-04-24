@@ -6,7 +6,10 @@
     "prereq": ["MATE3035"],
     "coreq": [""],
     "terms": ["Spring", "Fall", "Short Summer"],
-    "demand": 0
+    "demand": {
+      "quantity":"",
+      "term":""
+    }
   },
   "MATE3032": {
     "ID":3032,
