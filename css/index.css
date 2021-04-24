@@ -72,16 +72,17 @@
     width: 40%;
 }
 .col-pre, .enrollment-table-body td:nth-child(4){
-    width: 15%;
+    width: 10%;
 }
 .col-co, .enrollment-table-body td:nth-child(5){
-    width: 15%;
+    width: 10%;
 }
-
 .col-met, .enrollment-table-body td:nth-child(6){
     width: 10%;
 }
-
+.col-met, .enrollment-table-body td:nth-child(7){
+    width: 10%;
+}
 .row-header {
     border-bottom: 2px solid var(--main-color);
 }
