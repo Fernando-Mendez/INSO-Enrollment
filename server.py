@@ -84,19 +84,38 @@ class Serv(BaseHTTPRequestHandler):
             print(json.dumps(data))
             self._set_headers()
             self.wfile.write(bytes(json.dumps(data),'utf-8'))
+        if router_path.endswith('search'):
+            length = int(self.headers.get('content-length'))
+            message = json.loads(self.rfile.read(length))
+            print("hello: "+ message['data'])
+            # https://www.geeksforgeeks.org/python-splitting-text-and-number-in-string/
+            # Using re.compile() + re.match() + re.groups()
+            # Splitting text and number in string 
+            # temp = re.compile("([a-zA-Z]+)([0-9]+)")
+            # res = temp.match(test_str).groups()
+            # with open('data/courses.json') as json_file:
+            #     data = json.load(json_file)
+            #     for key in data:
+            #         print()
+                    # print('Name: ' + data[key]['data'])
+            # data['math']['this'] = "sdlfhdflkkls"
+            # with open('data/courses.json', 'w') as outfile:
+            #     json.dump(data, outfile, indent=2)
+            # print(json.dumps(data))
+            self._set_headers()
+            self.wfile.write(bytes(json.dumps(data),'utf-8'))
         # # file_to_open = self.routing()
         # content_len = int(self.headers.get('Content-Length'))
         # print(self.rfile.read(content_len))
-        # # json_string = json.dumps("""
-        # # {
-        # #     data: "sdfdsf",
-        # #     ede: "sdfsdfs"
-        # # }
+        # json_string = json.dumps("""
+        # {
+        #     data: "sdfdsf",
+        #     ede: "sdfsdfs"
+        # }
         
-        # # """)
-        # # read the message and convert it into a python dictionary
-        # length = int(self.headers.get('content-length'))
-        # message = json.loads(self.rfile.read(length))
+        # """)
+        # read the message and convert it into a python dictionary
+       
         
         # # add a property to the object, just to mess with data
         # message['received'] = 'ok'
@@ -114,7 +133,7 @@ class bcolors:
     RESET = '\033[0m' #RESET COLOR
 
 # Set server settings
-host = '10.0.0.8'
+host = '10.0.0.13'
 port = 3000
 
 # Set terminal message for developer

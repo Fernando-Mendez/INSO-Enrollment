@@ -6,7 +6,18 @@ let currButton = document.querySelector(".side-button-curriculum");
 let sideMenu = document.querySelector(".side-menu-hidden");
 currButton.addEventListener("click",async ()=>{
     sideMenu.classList.toggle("open");
-
+    let response = await fetch("/search", {
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: 'follow', // manual, *follow, error
+        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        // body: JSON.stringify(data) // body data type must match "Content-Type" header
+        body: JSON.stringify({data:"asdkajsdbkajsdbkjabsdkj"})
+        })
+    console.log(response)
 })
 
 let globalCourses;
