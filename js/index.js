@@ -98,6 +98,7 @@ const getCurriculum = async ()=>{
                     <td>${globalCourses[course.ID].description}</td>
                     <td>${globalCourses[course.ID].prereq.join(", ")}</td>
                     <td>${globalCourses[course.ID].coreq.join(", ")}</td>
+                    <td></td>
                 </tr>`;
                 }
             }
@@ -105,7 +106,8 @@ const getCurriculum = async ()=>{
                 myHTML += `<tr>
                         <td> --- </td>
                         <td> --- </td>
-                        <td>${course.ID} Elective</td
+                        <td>${course.ID} Elective</td>
+                        <td> --- </td>
                         <td> --- </td>
                         <td> --- </td>
                     </tr>`
@@ -132,9 +134,6 @@ searchInput.addEventListener("keydown", async (e)=>{
 
         let data = await response.json();
         var result = Object.keys(data).map(function (key) {
-        
-            // Using Number() to convert key to number type
-            // Using obj[key] to retrieve key value
             data[key]['nameid'] = key; 
             return data[key];
         });
