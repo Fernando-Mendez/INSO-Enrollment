@@ -30,8 +30,24 @@
     "description": "CALCULO 2",
     "prereq": ["MATE3031"],
     "coreq": [""],
-    "terms": ["Spring", "Fall", "Short Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "MATE3063": {
     "ID":3063,
@@ -39,8 +55,24 @@
     "description": "CALCULO 3",
     "prereq": ["MATE3032"],
     "coreq": [""],
-    "terms": ["Spring", "Fall", "Short Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "MATE4145": {
     "ID":4145,
@@ -48,8 +80,24 @@
     "description": "LINEAR ALGEBRA AND DIFFERENTIAL EQUATIONS",
     "prereq": ["MATE3063", "INGE 3016"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "QUIM3131": {
     "ID": 3131,
@@ -57,8 +105,24 @@
     "description":"GENERAL CHEMISTRY 1",
     "prereq": ["MATE3171"],
     "coreq": ["QUIM3133"],
-    "terms": ["Spring", "Fall", "Long Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "QUIM3133": {
     "ID": 3131,
@@ -66,8 +130,24 @@
     "description":"GENERAL CHEMISTRY 1: LAB",
     "prereq": ["MATE3171"],
     "coreq": ["QUIM3131"],
-    "terms": ["Spring", "Fall", "Long Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "QUIM3132": {
     "ID": 3131,
@@ -75,8 +155,24 @@
     "description":"GENERAL CHEMISTRY 2",
     "prereq": ["QUIM3131", "QUIM3133"],
     "coreq": ["QUIM3134"],
-    "terms": ["Spring", "Fall", "Long Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "QUIM3134": {
     "ID": 3131,
@@ -84,8 +180,24 @@
     "description":"GENERAL CHEMISTRY 2: LAB",
     "prereq": ["QUIM3131", "QUIM3133"],
     "coreq": ["QUIM3132"],
-    "terms": ["Spring", "Fall", "Long Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "FISI3171": {
     "ID": 3171,
@@ -93,8 +205,24 @@
     "description":"PHYSICS 1",
     "prereq": ["MATE3031"],
     "coreq": [""],
-    "terms": ["Spring", "Fall", "Long Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "FISI3173": {
     "ID": 3173,
@@ -102,8 +230,24 @@
     "description":"PHYSICS 1: LAB",
     "prereq": [""],
     "coreq": ["FISI3171"],
-    "terms": ["Spring", "Fall", "Long Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "FISI3172": {
     "ID": 3172,
@@ -111,8 +255,24 @@
     "description":"PHYSICS 2",
     "prereq": ["FISI3171"],
     "coreq": [""],
-    "terms": ["Spring", "Fall", "Long Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "FISI3174": {
     "ID": 3174,
@@ -120,8 +280,24 @@
     "description":"PHYSICS 2: LAB",
     "prereq": ["FISI3173"],
     "coreq": ["FISI3172"],
-    "terms": ["Spring", "Fall", "Long Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC3011":{
     "ID": 3011,
@@ -129,8 +305,24 @@
     "description": "INTRO. TO COMPUTER PROGRAMMING 1",
     "prereq": [""],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC4010":{
     "ID": 4010,
@@ -138,8 +330,24 @@
     "description": "ADVANCED PROGRAMMING",
     "prereq": ["CIIC3011"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC3075":{
     "ID": 3075,
@@ -147,8 +355,24 @@
     "description": "FOUNDATIONS OF COMPUTING",
     "prereq": ["CIIC3011"],
     "coreq": ["MATE3031"],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC4020":{
     "ID": 4020,
@@ -156,8 +380,24 @@
     "description": "DATA STRUCTURES",
     "prereq": ["CIIC4010", "CIIC3075", "MATE3031"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "INGE3011":{
     "ID": 3011,
@@ -165,8 +405,24 @@
     "description": "ENGINEERING GRAPHICS",
     "prereq": [""],
     "coreq": [""],
-    "terms": ["Spring", "Fall", "Short Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "INEL3105":{
     "ID":3105,
@@ -174,8 +430,24 @@
     "description": "ELECTRICAL SYSTEMS ANALYSIS 1",
     "prereq": ["MATE3032"],
     "coreq": ["MATE3063", "FISI3172"],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "INEL4115":{
     "ID":4115,
@@ -183,8 +455,24 @@
     "description": "ELECTRICAL MEASUREMENT LAB",
     "prereq": ["INEL3105"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "INSO4101":{
     "ID":4101,
@@ -192,8 +480,24 @@
     "description": "INTRO. TO SOFTWARE ENGINEERING",
     "prereq": ["CIIC4020"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC3081":{
     "ID":3081,
@@ -201,8 +505,24 @@
     "description": "COMPUTER ARCHITECTURE 1",
     "prereq": ["INEL3105", "CIIC4010"],
     "coreq": [""],
-    "terms": ["Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "INGE3035":{
     "ID":3035,
@@ -210,8 +530,24 @@
     "description": "ENGINEERING MECHANICS",
     "prereq": ["MATE3031"],
     "coreq": ["FISI3171"],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC4025":{
     "ID":4025,
@@ -219,8 +555,24 @@
     "description": "ALGORITHM DESIGN AND ANALYSIS",
     "prereq": ["CIIC4020"],
     "coreq": [""],
-    "terms": ["Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC4082":{
     "ID":4082,
@@ -228,8 +580,24 @@
     "description": "COMPUTER ARCHITECTURE 2",
     "prereq": ["CIIC3081"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "INGE3045":{
     "ID":3045,
@@ -237,8 +605,24 @@
     "description": "ENGINEERING MATERIALS",
     "prereq": ["QUIM3132", "QUIM3134", "FISI3172"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "ININ4010":{
     "ID":4010,
@@ -246,8 +630,24 @@
     "description": "ENGINEERING PROBABILITY AND STATISTICS",
     "prereq": ["QUIM3132",  "MATE3032"],
     "coreq": [""],
-    "terms": ["Spring", "Fall", "Long Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC4050":{
     "ID":4050,
@@ -255,8 +655,24 @@
     "description": "OPERATING SYSTEMS",
     "prereq": ["CIIC4020", "CIIC82"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC4030":{
     "ID":4030,
@@ -264,8 +680,24 @@
     "description": "PROGRAMMING LANGUAGES",
     "prereq": ["CIIC4020"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC5045":{
     "ID":5045,
@@ -273,8 +705,24 @@
     "description": "FORMAL LANGUAGES AND AUTOMATA",
     "prereq": ["CIIC4025"],
     "coreq": [""],
-    "terms": ["Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "ININ4015":{
     "ID":4015,
@@ -282,8 +730,24 @@
     "description": "ENGINEERING ECONOMICS",
     "prereq": ["MATE3032"],
     "coreq": [""],
-    "terms": ["Spring", "Fall", "Short Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC4060":{
     "ID":4060,
@@ -291,8 +755,24 @@
     "description": "DATABASE SYSTEMS",
     "prereq": ["CIIC4020"],
     "coreq": ["CIIC4050"],
-    "terms": ["Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "CIIC4070":{
     "ID":4070,
@@ -300,8 +780,24 @@
     "description": "COMPUTER NETWORKS AND THE WWW",
     "prereq": ["CIIC4050"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "INME4045":{
     "ID":4045,
@@ -309,8 +805,24 @@
     "description": "THERMODINAMICS",
     "prereq": ["FISI3172", "QUIM3002"],
     "coreq": [""],
-    "terms": ["Spring", "Fall"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "ESPA3101":{
     "ID":3101,
@@ -318,8 +830,24 @@
     "description": "SPANISH BASIC 1",
     "prereq": [""],
     "coreq": [""],
-    "terms": ["Spring", "Fall", "Short Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "ESPA3102":{
     "ID":3102,
@@ -327,7 +855,23 @@
     "description": "SPANISH BASIC 2",
     "prereq": ["ESPA3101"],
     "coreq": [""],
-    "terms": ["Spring", "Fall", "Short Summer"],
-    "demand": 0
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   }
 }
