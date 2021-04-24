@@ -259,6 +259,8 @@ html, body {
     border-bottom: 2px solid var(--main-color);
 }
 
+/* From here on out its all for the curriculum side menu */
+
 .side-menu-hidden {
     position: fixed;
     top: 0;
@@ -323,7 +325,6 @@ html, body {
     background-color: white;
 }
 
-
 .curriculum-table-body td {
     padding: 0 30px;
     box-sizing: border-box;
@@ -331,4 +332,23 @@ html, body {
     text-overflow:ellipsis;
     overflow:hidden;
     white-space:nowrap;
+}
+
+.cur-col-sem, .curriculum-table-body td:nth-child(1){
+    width: 15%;
+}
+.cur-col-code, .curriculum-table-body td:nth-child(2){
+    width: 15%;
+}
+.cur-col-course, .curriculum-table-body td:nth-child(3){
+    width: 30%;
+}
+.cur-col-pre, .curriculum-table-body td:nth-child(4){
+    width: 15%;
+}
+.cur-col-core, .curriculum-table-body td:nth-child(5){
+    width: 15%;
+}
+.cur-col-taken, .curriculum-table-body td:nth-child(6){
+    width: 10%;
 }
