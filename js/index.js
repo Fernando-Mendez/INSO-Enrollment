@@ -85,21 +85,21 @@ const getCurriculum = async ()=>{
         
         ciicCur.courses.forEach((course, index)=>{
             console.log("object:", course);
-            if (course.coursename.length == 8){
-                if(globalCourses[course.coursename]){
+            if (course.ID.length == 8){
+                if(globalCourses[course.ID]){
                     myHTML += `<tr>
-                    <td>${globalCourses[course.coursename].semester}</td>
-                    <td>${globalCourses[course.coursename].nameid}</td>
-                    <td>${globalCourses[course.coursename].description}</td>
-                    <td>${globalCourses[course.coursename].prereq.join(", ")}</td>
-                    <td>${globalCourses[course.coursename].coreq.join(", ")}</td>
+                    <td>${globalCourses[course.ID].semester}</td>
+                    <td>${globalCourses[course.ID].nameid}</td>
+                    <td>${globalCourses[course.ID].description}</td>
+                    <td>${globalCourses[course.ID].prereq.join(", ")}</td>
+                    <td>${globalCourses[course.ID].coreq.join(", ")}</td>
                 </tr>`;
                 }
             }
             else {
                 `<tr>
                         <td> </td>
-                        <td>${course.coursename.nameid}</td>
+                        <td>${course.ID.nameid}</td>
                         <td> Course Elective </td>
                         <td> </td>
                         <td> </td>
