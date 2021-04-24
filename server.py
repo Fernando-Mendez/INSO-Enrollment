@@ -59,75 +59,43 @@ class Serv(BaseHTTPRequestHandler):
             self.wfile.write(bytes(file_to_open,'utf-8'))
     # @overwrite
     def do_POST(self):
-        # ""database"" part
         router_path = self.path
-        if router_path.endswith('courses'):
-            with open('data/courses.json') as json_file:
-                data = json.load(json_file)
-                # for key in data:
-                #     print('Name: ' + data[key]['data'])
-            # data['math']['this'] = "sdlfhdflkkls"
-            # with open('data/courses.json', 'w') as outfile:
-            #     json.dump(data, outfile, indent=2)
-            print(json.dumps(data))
-            self._set_headers()
-            self.wfile.write(bytes(json.dumps(data),'utf-8'))
 
         if router_path.endswith('curriculum'):
             with open('data/curriculum.json') as json_file:
                 data = json.load(json_file)
-                # for key in data:
-                #     print('Name: ' + data[key]['data'])
-            # data['math']['this'] = "sdlfhdflkkls"
-            # with open('data/courses.json', 'w') as outfile:
-            #     json.dump(data, outfile, indent=2)
-            print(json.dumps(data))
             self._set_headers()
             self.wfile.write(bytes(json.dumps(data),'utf-8'))
         if router_path.endswith('search'):
             length = int(self.headers.get('content-length'))
-            message = json.loads(self.rfile.read(length))
-            print("hello: "+ message['data'])
-            # https://www.geeksforgeeks.org/python-splitting-text-and-number-in-string/
-            # Using re.compile() + re.match() + re.groups()
-            # Splitting text and number in string 
-            # temp = re.compile("([a-zA-Z]+)([0-9]+)")
-            # res = temp.match(test_str).groups()
-            # with open('data/courses.json') as json_file:
-            #     data = json.load(json_file)
-            #     for key in data:
-            #         print()
-                    # print('Name: ' + data[key]['data'])
-            # data['math']['this'] = "sdlfhdflkkls"
-            # with open('data/courses.json', 'w') as outfile:
-            #     json.dump(data, outfile, indent=2)
-            # print(json.dumps(data))
-            self._set_headers()
-            self.wfile.write(bytes(json.dumps(data),'utf-8'))
-        # # file_to_open = self.routing()
-        # content_len = int(self.headers.get('Content-Length'))
-        # print(self.rfile.read(content_len))
-        # json_string = json.dumps("""
-        # {
-        #     data: "sdfdsf",
-        #     ede: "sdfsdfs"
-        # }
-        
-        # """)
-        # read the message and convert it into a python dictionary
-       
-        
-        # # add a property to the object, just to mess with data
-        # message['received'] = 'ok'
-        
-        # # send the message back
-        # self._set_headers()
-        # # Begin the response
-        # print(message)
-        # # self.wfile.write(json.dumps(message))
-        # # self.wfile.write(bytes(file_to_open,'utf-8'))
-        # self.wfile.write(json.dumps({'hello': 'world', 'received': 'ok'}))
+            postData = json.loads(self.rfile.read(length))
 
+            with open('data/courses.json') as json_file:
+                data = json.load(json_file)
+            if not postData['data']:
+                filtered_data = data
+            else:
+                filtered_data = {}
+                # For loop the keys in a json object
+                for key in data:
+                    matched = False
+                    # Loop through post data body {array} to see if one of the string matches the concentration or the ID
+                    for value in postData['data']:
+                        matched = False
+                        # print(index + key)
+                        if value.lower() in data[key]['concentration'].lower():
+                            print("sdfsdfsdf")
+                            matched = True
+                        if value in str(data[key]['ID']):
+                            matched = True
+                    # If matched return the object that matched.
+                    if matched:
+                        filtered_data[key] = data[key]
+            self._set_headers()
+            self.wfile.write(bytes(json.dumps(filtered_data),'utf-8'))
+
+          
+       
 class bcolors:
     OK = '\033[92m' #GREEN
     RESET = '\033[0m' #RESET COLOR
