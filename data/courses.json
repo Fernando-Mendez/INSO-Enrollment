@@ -13,7 +13,7 @@
     "concentration": "MATE",
     "description": "CALCULO 2",
     "prereq": ["MATE3031"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -22,7 +22,7 @@
     "concentration": "MATE",
     "description": "CALCULO 3",
     "prereq": ["MATE3032"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -31,7 +31,7 @@
     "concentration": "MATE",
     "description": "LINEAR ALGEBRA AND DIFFERENTIAL EQUATIONS",
     "prereq": ["MATE3063", "INGE 3016"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -111,8 +111,8 @@
     "ID": 3011,
     "concentration": "CIIC",
     "description": "INTRO. TO COMPUTER PROGRAMMING 1",
-    "prereq": [],
-    "coreq": [],
+    "prereq": [""],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -121,7 +121,7 @@
     "concentration": "CIIC",
     "description": "ADVANCED PROGRAMMING",
     "prereq": ["CIIC3011"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -139,7 +139,7 @@
     "concentration": "CIIC",
     "description": "DATA STRUCTURES",
     "prereq": ["CIIC4010", "CIIC3075", "MATE3031"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -147,8 +147,8 @@
     "ID": 3011,
     "concentration": "INGE",
     "description": "ENGINEERING GRAPHICS",
-    "prereq": [],
-    "coreq": [],
+    "prereq": [""],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -166,7 +166,7 @@
     "concentration": "INEL",
     "description": "ELECTRICAL MEASUREMENT LAB",
     "prereq": ["INEL3105"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -175,7 +175,7 @@
     "concentration": "INSO",
     "description": "INTRO. TO SOFTWARE ENGINEERING",
     "prereq": ["CIIC4020"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -184,7 +184,7 @@
     "concentration": "CIIC",
     "description": "COMPUTER ARCHITECTURE 1",
     "prereq": ["INEL3105", "CIIC4010"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -202,7 +202,7 @@
     "concentration": "CIIC",
     "description": "ALGORITHM DESIGN AND ANALYSIS",
     "prereq": ["CIIC4020"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -211,7 +211,7 @@
     "concentration": "CIIC",
     "description": "COMPUTER ARCHITECTURE 2",
     "prereq": ["CIIC3081"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -220,7 +220,7 @@
     "concentration": "INGE",
     "description": "ENGINEERING MATERIALS",
     "prereq": ["QUIM3132", "QUIM3134", "FISI3172"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -229,7 +229,7 @@
     "concentration": "ININ",
     "description": "ENGINEERING PROBABILITY AND STATISTICS",
     "prereq": ["QUIM3132",  "MATE3032"],
-    "coreq": [],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   },
@@ -238,7 +238,79 @@
     "concentration": "CIIC",
     "description": "OPERATING SYSTEMS",
     "prereq": ["CIIC4020", "CIIC82"],
-    "coreq": [],
+    "coreq": [""],
+    "terms": [""],
+    "demand": 0
+  },
+  "CIIC4030":{
+    "ID":4030,
+    "concentration": "CIIC",
+    "description": "PROGRAMMING LANGUAGES",
+    "prereq": ["CIIC4020"],
+    "coreq": [""],
+    "terms": [""],
+    "demand": 0
+  },
+  "CIIC5045":{
+    "ID":5045,
+    "concentration": "CIIC",
+    "description": "FORMAL LANGUAGES AND AUTOMATA",
+    "prereq": ["CIIC4025"],
+    "coreq": [""],
+    "terms": [""],
+    "demand": 0
+  },
+  "ININ4015":{
+    "ID":4015,
+    "concentration": "ININ",
+    "description": "ENGINEERING ECONOMICS",
+    "prereq": ["MATE3032"],
+    "coreq": [""],
+    "terms": [""],
+    "demand": 0
+  },
+  "CIIC4060":{
+    "ID":4060,
+    "concentration": "CIIC",
+    "description": "DATABASE SYSTEMS",
+    "prereq": ["CIIC4020"],
+    "coreq": ["CIIC4050"],
+    "terms": [""],
+    "demand": 0
+  },
+  "CIIC4070":{
+    "ID":4070,
+    "concentration": "CIIC",
+    "description": "COMPUTER NETWORKS AND THE WWW",
+    "prereq": ["CIIC4050"],
+    "coreq": [""],
+    "terms": [""],
+    "demand": 0
+  },
+  "INME4045":{
+    "ID":4045,
+    "concentration": "INME",
+    "description": "THERMODINAMICS",
+    "prereq": ["FISI3172", "QUIM3002"],
+    "coreq": [""],
+    "terms": [""],
+    "demand": 0
+  },
+  "ESPA3101":{
+    "ID":3101,
+    "concentration": "ESPA",
+    "description": "SPANISH BASIC 1",
+    "prereq": [""],
+    "coreq": [""],
+    "terms": [""],
+    "demand": 0
+  },
+  "ESPA3102":{
+    "ID":3102,
+    "concentration": "ESPA",
+    "description": "SPANISH BASIC 2",
+    "prereq": ["ESPA3101"],
+    "coreq": [""],
     "terms": [""],
     "demand": 0
   }
