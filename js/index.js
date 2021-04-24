@@ -1,18 +1,23 @@
-
+let globalCourses;
 
 // The following code is for opening side menu of the curriculum window
-
 let currButton = document.querySelector(".side-button-curriculum");
 let sideMenu = document.querySelector(".side-menu-hidden");
 currButton.addEventListener("click",async ()=>{
     sideMenu.classList.toggle("open");
 })
 
+let termDropdown = document.querySelector("#semester-dropdown");
+termDropdown.addEventListener("change" , ()=> {
+    const data = tranformToObject(globalCourses);
+    tbody.innerHTML = transformToTableRows(data);
+})
+
 function transformToTableRows(data) {
     let rows = "";
     data.forEach((item)=>{
         rows += `<tr>
-                <td>${item.demand}</td>
+                <td>${item.demand.find(i => i.term == termDropdown.value).quantity}</td>
                 <td>${item.nameid}</td>
                 <td>${item.description}</td>
                 <td>${item.prereq.join(", ")}</td>
@@ -27,7 +32,7 @@ function transformToTableRows(data) {
 }
 
 
-let globalCourses;
+
 
 let tbody = document.querySelector("#enrollment-tbody");
 window.addEventListener("load", async ()=>{
@@ -44,13 +49,7 @@ window.addEventListener("load", async ()=>{
         
         let data = await response.json();
 
-        var result = Object.keys(data).map(function (key) {
-        
-            // Using Number() to convert key to number type
-            // Using obj[key] to retrieve key value
-            data[key]['nameid'] = key; 
-            return data[key];
-        });
+        var result = tranformToObject(data);
 
         globalCourses = data;
         tbody.innerHTML = transformToTableRows(result);
@@ -133,11 +132,18 @@ searchInput.addEventListener("keydown", async (e)=>{
         })
 
         let data = await response.json();
-        var result = Object.keys(data).map(function (key) {
-            data[key]['nameid'] = key; 
-            return data[key];
-        });
+        var result = tranformToObject(data)
 
         tbody.innerHTML = transformToTableRows(result);
     }
 })
+
+function tranformToObject(data) {
+    return Object.keys(data).map(function (key) {
+        
+        // Using Number() to convert key to number type
+        // Using obj[key] to retrieve key value
+        data[key]['nameid'] = key; 
+        return data[key];
+    });
+}
