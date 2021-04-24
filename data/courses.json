@@ -5,11 +5,24 @@
     "description": "CALCULO 1",
     "prereq": ["MATE3035"],
     "coreq": [""],
-    "terms": ["Spring", "Fall", "Short Summer"],
-    "demand": {
-      "quantity":"",
-      "term":""
-    }
+    "demand": [
+      {
+        "quantity": 1,
+        "term": "Fall"
+      },
+      {
+        "quantity": 2,
+        "term": "Spring"
+      },
+      {
+        "quantity": 3,
+        "term":  "Short Summer"
+      },
+      {
+        "quantity": 3,
+        "term":  "Long Summer"
+      }
+    ]
   },
   "MATE3032": {
     "ID":3032,
