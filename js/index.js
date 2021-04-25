@@ -12,7 +12,7 @@ let tbody = document.querySelector("#enrollment-tbody");
 let cbody = document.querySelector("#curriculum-tbody");
 
 // Open Side Menu
-let currButton = document.querySelector(".side-button-curriculum");
+let currButton = document.querySelector("#side-button-curriculum");
 let sideMenu = document.querySelector(".side-menu-hidden");
 currButton.addEventListener("click",async ()=>{
     sideMenu.classList.toggle("open");
@@ -22,6 +22,19 @@ currButton.addEventListener("click",async ()=>{
 let closeButton = document.querySelector("#close-button");
 closeButton.addEventListener("click",async ()=>{
     sideMenu.classList.toggle("open");
+})
+
+// Open Enrollment Side Menu
+let enroButton = document.querySelector("#side-button-enrollment");
+let enroSideMenu = document.querySelector(".hidden-enrollment-view");
+enroButton.addEventListener("click",async ()=>{
+    enroSideMenu.classList.toggle("open");
+})
+
+// Close Enrollment Side Menu
+let enroCloseButton = document.querySelector("#enrollment-close-button");
+enroCloseButton.addEventListener("click",async ()=>{
+    enroSideMenu.classList.toggle("open");
 })
 
 // Dropdown Filter

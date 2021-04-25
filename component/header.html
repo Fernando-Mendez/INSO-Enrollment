@@ -87,7 +87,8 @@
 
             <div class="search-bar"><input id="search-course-input" type="text" placeholder="Search course..."></div>
             
-            <button class="side-button-curriculum">My Curriculum</button>
+            <button id="side-button-curriculum">My Curriculum</button>
+            <button id="side-button-enrollment">Enrollment</button>
         </div>
 
         <div class="side-menu-hidden">
@@ -114,6 +115,34 @@
               <div class="curriculum-scrolling-device">
                 <table class="curriculum-table-body" cellpadding="0" cellspacing="0">
                   <tbody id="curriculum-tbody">
+                  </tbody>
+                </table>
+              </div>
+        </div>
+
+
+        <div class="hidden-enrollment-view">
+            <div class="enrollment upr-icon close">
+                <img src="https://www.uprm.edu/uprmcaep/wp-content/uploads/sites/88/2016/11/logo-uprm.png" alt="icon-uprm" />
+                <div> <b>Enrollment </b></div>
+                <button id="enrollment-close-button">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        
+            <table class="enrollment-hidden-table" cellpadding="0" cellspacing="0">
+                <thead>
+                  <tr class="enrollment-view-row-header">
+                    <th class="enr-col-dem"> Demand </th>
+                    <th class="enr-col-code"> Code </th>
+                    <th class="enr-col-desc"> Description </th>
+                    <th class="enr-col-term"> Term </th>
+                  </tr>
+                </thead>
+              </table>
+              <div class="hidden-enrollment-scrolling-device">
+                <table class="hidden-enrollment-table-body" cellpadding="0" cellspacing="0">
+                  <tbody id="hidden-enrollment-tbody">
                   </tbody>
                 </table>
               </div>
