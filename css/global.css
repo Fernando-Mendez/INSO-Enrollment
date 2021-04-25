@@ -121,6 +121,11 @@ html, body {
     height: 40px;
     border-radius: 20px;
     cursor: pointer;
+    margin-left: 5px;
+}
+
+#side-button-enrollment {
+    background-color: #568f4e;
 }
 
 .filters-container select {
@@ -266,4 +271,94 @@ html, body {
 }
 .cur-col-taken, .curriculum-table-body td:nth-child(6){
     width: 10%;
+}
+
+
+/* From this point on its the formatting for the Enrollment Hidden Menu */
+.hidden-enrollment-view {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0px 1px 35px -11px rgba(0,0,0,0.67);
+    -webkit-box-shadow: 0px 1px 35px -11px rgba(0,0,0,0.67);
+    -moz-box-shadow: 0px 1px 35px -11px rgba(0,0,0,0.67);
+    transform: translateX(110%);
+    transition: transform .5s ease-in-out;
+    z-index: 3;
+}
+
+.hidden-enrollment-view.open {
+    transform: translateX(0);
+}
+
+#enrollment-close-button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: none;
+}
+
+.enrollment-hidden-table {
+    position: relative;
+    width:100%;
+    table-layout: fixed;
+    white-space: nowrap;
+    border: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.enrollment-hidden-table tr {
+    height: 60px;
+}
+
+.hidden-enrollment-table-body  {
+    table-layout: fixed;
+    width: 100%;
+    position: relative;
+    overflow:hidden;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.hidden-enrollment-table-body tr {
+    height: 60px;
+    width: 100%;
+}
+
+.hidden-enrollment-table-body td {
+    padding: 0 30px;
+    box-sizing: border-box;
+    text-align: center;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.enrollment-hidden-table > thead, .enrollment-table-body  tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    background-color: white;
+}
+
+.enr-col-dem, .hidden-enrollment-table-body td:nth-child(1){
+    width: 25%;
+}
+.enr-col-code, .hidden-enrollment-table-body td:nth-child(2){
+    width: 25%;
+}
+.enr-col-desc, .hidden-enrollment-table-body td:nth-child(3){
+    width: 25%;
+}
+.enr-col-term, .hidden-enrollment-table-body td:nth-child(4){
+    width: 25%;
 }
