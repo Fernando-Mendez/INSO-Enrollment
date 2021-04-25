@@ -25,6 +25,8 @@ termDropdown.addEventListener("change" , ()=> {
 let tbody = document.querySelector("#enrollment-tbody");
 window.addEventListener("load", async ()=>{
 
+        auth()
+
         // ### LOGIN #####
         await getAuth();
 
@@ -191,4 +193,33 @@ async function postApproved(courseID, approve){
         referrerPolicy: 'no-referrer', 
         body: JSON.stringify({data: {id: courseID, approve: approve}})
     })
+}
+
+function auth() {
+    let LoginForm = document.querySelector("#upr-form-auth");
+
+    LoginForm.addEventListener("submit", async  (e)=>{
+        e.preventDefault();
+
+        let data = {
+            username:LoginForm.elements["uname"].value,
+            password:LoginForm.elements["psw"].value
+        }
+        
+        let response = await fetch("/login", {
+            method: 'POST', // GET, POST, PUT, DELETE
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow', 
+            referrerPolicy: 'no-referrer', 
+            body: JSON.stringify({data: data})
+        })
+
+        let parsedResult = await response.json();
+
+        console.log(parsedResult);
+
+    })
+
 }

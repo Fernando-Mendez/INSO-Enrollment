@@ -17,8 +17,6 @@ html, body {
     font-family: 'Open Sans', sans-serif;
 }
 
-
-
 .background-back{
     position: relative;
     padding: 20px;
@@ -36,6 +34,7 @@ html, body {
     z-index: 2;
     border-radius: 15px;
     overflow: hidden;
+    filter: blur(4px);
     box-shadow: -5px 55px 96px -41px rgb(0 0 0 / 67%);
     -webkit-box-shadow: -5px 55px 96px -41px rgb(0 0 0 / 67%);
     -moz-box-shadow: -5px 55px 96px -41px rgb(0 0 0 / 67%);
