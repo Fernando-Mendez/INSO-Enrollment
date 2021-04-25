@@ -3,6 +3,8 @@ let globalCoursesTaken;
 let globalCoursesEnrolled;
 let isLogged = false;
 let username = "";
+let IconCheckmark = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z" /></svg>`;
+let IconX = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="red"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 16.538l-4.592-4.548 4.546-4.587-1.416-1.403-4.545 4.589-4.588-4.543-1.405 1.405 4.593 4.552-4.547 4.592 1.405 1.405 4.555-4.596 4.591 4.55 1.403-1.416z"/></svg>`;
 
 // Courses Table
 let tbody = document.querySelector("#enrollment-tbody");
@@ -76,6 +78,27 @@ function findEnrolledCourse(item) {
     }
     return isChecked;
 }
+
+function isRequirementMet (item){
+    // globalCoursesTaken
+    // If does not have requirements its ok to take it
+    if (item.prereq.length === 0 && item.coreq.length === 0)
+    {
+        return true
+    }
+    let taken = true;
+    item.prereq.forEach(item=>{
+        if(globalCoursesTaken[item] === false ){
+            taken = false;
+        }
+    })
+    item.coreq.forEach(item=>{
+        if(globalCoursesTaken[item] === false ){
+            taken = false;
+        }
+    })
+    return taken;
+}
 function transformToTableRows(data) {
     var result = tranformToObject(data);
     let rows = "";
@@ -86,11 +109,7 @@ function transformToTableRows(data) {
                 <td>${item.description}</td>
                 <td>${item.prereq.join(", ")}</td>
                 <td>${item.coreq.join(", ")}</td>
-                <td><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green">
-                    <path
-                    d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z" />
-                </svg>
-                </td>
+                <td>${isRequirementMet(item) ? IconCheckmark: IconX}</td>
                 <td> <input type="checkbox" onclick='handleCourseCheckbox(this);' data-id="${item.nameid}" ${ findEnrolledCourse(item) ? "checked":""}> </td>
             </tr>`;
     })
