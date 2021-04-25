@@ -4,6 +4,7 @@
     --back-color: #DCE0EB;
     --main-color: #F4F5F7;
     --blue-color: #0053D3;
+    --svg-size: 10%;
 }
 
 
@@ -74,18 +75,15 @@ html, body {
     list-style: none;
 }
 
-.list-format img {
-    height: 30px;
-    width: 30px;
-    margin-right: 20px;
-}
 .list-format svg{
-    height: 30px;
-    width: 30px !important;
+    height: var(--svg-size);
+    width: var(--svg-size) !important;
     margin-right: 20px;
 }
+
 .list-format li{
     display: flex;
+    font-size: 1vw;
     padding: 20px 0;
     cursor: pointer;
     border-right: 3px solid white;
