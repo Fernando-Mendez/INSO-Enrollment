@@ -190,29 +190,17 @@ async function getCurriculum() {
 
 }
 
-async function getEnrollment() {
+function getEnrollment() {
 
     let myHTML = "";
-    console.log(globalCoursesEnrolled)
     globalCoursesEnrolled.forEach((course) => {
-        console.log(course);
-        if (course.id.length == 8) {
-            if (course.id) {
-                myHTML += `<tr>
-                    <td>${globalCourses[course.id].demand.find(i => i.term == termDropdown.value).quantity}</td>
-                    <td>${globalCourses[course.id].nameid}</td>
-                    <td>${globalCourses[course.id].description}</td>
-                    <td>${course.term}</td>
-                </tr>`;
-            }
-        }
-        else {
+        if (course.id) {
             myHTML += `<tr>
-                        <td> ${globalCoursesEnrolled[course.ID].demand} </td>
-                        <td>${course.id}</td>
-                        <td> ${course.id} Elective} </td>
-                        <td> ${course.term}  </td>
-                    </tr>`
+                <td>${globalCourses[course.id].demand.find(i => i.term == termDropdown.value).quantity}</td>
+                <td>${globalCourses[course.id].nameid}</td>
+                <td>${globalCourses[course.id].description}</td>
+                <td>${course.term}</td>
+            </tr>`;
         }
     })
     ebody.innerHTML = myHTML;
@@ -265,37 +253,37 @@ async function postApproved(courseID, approve){
 function auth() {
     let LoginForm = document.querySelector("#upr-form-auth");
 
-    // LoginForm.addEventListener("submit", async  (e)=>{
-    //     e.preventDefault();
+    LoginForm.addEventListener("submit", async  (e)=>{
+        e.preventDefault();
 
-    //         let data = {
-    //             username:LoginForm.elements["uname"].value,
-    //             password:LoginForm.elements["psw"].value
-    //         }
+            let data = {
+                username:LoginForm.elements["uname"].value,
+                password:LoginForm.elements["psw"].value
+            }
             
-    //         let response = await fetch("/login", {
-    //             method: 'POST', // GET, POST, PUT, DELETE
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             redirect: 'follow', 
-    //             referrerPolicy: 'no-referrer', 
-    //             body: JSON.stringify({data: data})
-    //         })
+            let response = await fetch("/login", {
+                method: 'POST', // GET, POST, PUT, DELETE
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                redirect: 'follow', 
+                referrerPolicy: 'no-referrer', 
+                body: JSON.stringify({data: data})
+            })
     
-    //         let parsedResult = await response.json();
+            let parsedResult = await response.json();
     
-    //         isLogged = parsedResult.loginSuccesful;
-    //         username = parsedResult.username;
+            isLogged = parsedResult.loginSuccesful;
+            username = parsedResult.username;
 
-    //         if( !isLogged ) {
-    //             alert("Try again! \n Username or password incorrect!")
-    //         }else {
-    //             LoginSuccess();
-    //         }
+            if( !isLogged ) {
+                alert("Try again! \n Username or password incorrect!")
+            }else {
+                LoginSuccess();
+            }
        
-    // })
-    LoginSuccess();
+    })
+    // LoginSuccess();
 
 }
 
@@ -312,7 +300,7 @@ async function LoginSuccess() {
 
     await getCurriculum();
 
-    await getEnrollment();
+    getEnrollment();
 
     let checkboxes = document.getElementsByName("curriculum-cb");
 
@@ -343,6 +331,7 @@ async function handleCourseCheckbox (e){
     console.log(data);
 
     globalCoursesEnrolled = data.matricula;
+    getEnrollment();
     globalCourses = data.courses;
     tbody.innerHTML = transformToTableRows(globalCourses);
     e.disabled = false;
