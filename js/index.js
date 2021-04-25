@@ -190,6 +190,34 @@ async function getCurriculum() {
 
 }
 
+async function getEnrollment() {
+
+    let myHTML = "";
+    console.log(globalCoursesEnrolled)
+    globalCoursesEnrolled.forEach((course) => {
+        console.log(course);
+        if (course.id.length == 8) {
+            if (course.id) {
+                myHTML += `<tr>
+                    <td>${globalCourses[course.id].demand.find(i => i.term == termDropdown.value).quantity}</td>
+                    <td>${globalCourses[course.id].nameid}</td>
+                    <td>${globalCourses[course.id].description}</td>
+                    <td>${course.term}</td>
+                </tr>`;
+            }
+        }
+        else {
+            myHTML += `<tr>
+                        <td> ${globalCoursesEnrolled[course.ID].demand} </td>
+                        <td>${course.id}</td>
+                        <td> ${course.id} Elective} </td>
+                        <td> ${course.term}  </td>
+                    </tr>`
+        }
+    })
+    ebody.innerHTML = myHTML;
+}
+
 async function getAuthCoursesApproved(){
     let response = await fetch("/getAuthData", {
         method: 'POST', // GET, POST, PUT, DELETE
@@ -283,6 +311,9 @@ async function LoginSuccess() {
     await getCourses();
 
     await getCurriculum();
+
+    await getEnrollment();
+
     let checkboxes = document.getElementsByName("curriculum-cb");
 
     checkboxes.forEach((checkbox)=>{
