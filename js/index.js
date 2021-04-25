@@ -8,8 +8,10 @@ let IconX = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" view
 
 // Courses Table
 let tbody = document.querySelector("#enrollment-tbody");
-// Curriculum table
+// Curriculum Table
 let cbody = document.querySelector("#curriculum-tbody");
+// Enrollment Table
+let ebody = document.querySelector("#hidden-enrollment-tbody");
 
 // Open Side Menu
 let currButton = document.querySelector("#side-button-curriculum");
