@@ -15,7 +15,7 @@
         "term": "Fall"
       },
       {
-        "quantity": 1,
+        "quantity": 0,
         "term": "Spring"
       },
       {
@@ -44,7 +44,7 @@
         "term": "Fall"
       },
       {
-        "quantity": 0,
+        "quantity": 1,
         "term": "Spring"
       },
       {
@@ -73,7 +73,7 @@
         "term": "Fall"
       },
       {
-        "quantity": 1,
+        "quantity": 0,
         "term": "Spring"
       },
       {
@@ -103,7 +103,7 @@
         "term": "Fall"
       },
       {
-        "quantity": 1,
+        "quantity": 0,
         "term": "Spring"
       },
       {

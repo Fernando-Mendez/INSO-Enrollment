@@ -206,6 +206,13 @@ html, body {
 	outline: none;
 }
 
+.curriculum-scrolling-device {
+    height: calc(100% - 184px);
+    position: relative;
+    display: block;
+    overflow: auto;
+}
+
 .curriculum-table {
     position: relative;
     width:100%;
