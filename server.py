@@ -99,7 +99,7 @@ class Serv(BaseHTTPRequestHandler):
                 data = json.load(json_file)
                 filtered_data = {}
                 for item in data:
-                    if "PEPE" in item['username']:
+                    if "student" in item['username']:
                         filtered_data = item['CIIC']
                         break
             self._set_headers()
@@ -110,7 +110,7 @@ class Serv(BaseHTTPRequestHandler):
                 data = json.load(json_file)
                 filtered_data = {}
                 for item in data:
-                    if "PEPE" in item['username']:
+                    if "student" in item['username']:
                         filtered_data = item['matricula']
                         break
             self._set_headers()
@@ -127,7 +127,7 @@ class Serv(BaseHTTPRequestHandler):
                 matricula = {}
                 for item in data1:
                     # Check if user is ->
-                    if "PEPE" in item['username']:
+                    if "student" in item['username']:
                         matricula = item['matricula']
                         # If enroll true add the course to matricula
                         if postData['data']['enroll']:
@@ -173,7 +173,7 @@ class Serv(BaseHTTPRequestHandler):
                 data = json.load(json_file)
                 print(postData['data'])
                 for item in data:
-                    if "PEPE" in item['username']:
+                    if "student" in item['username']:
                         item['CIIC']['courses'][postData['data']['id']] = postData['data']['approve']
             with open('data/auth.json', 'w') as outfile:
                 json.dump(data, outfile, indent=2)
@@ -204,7 +204,7 @@ class bcolors:
     RESET = '\033[0m' #RESET COLOR
 
 # Set server settings
-host = '10.0.0.13'
+host = '10.0.0.8'
 port = 3000
 
 # Set terminal message for developer
