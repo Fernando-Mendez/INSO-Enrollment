@@ -18,7 +18,6 @@ class Serv(BaseHTTPRequestHandler):
         file_to_open = open('component/header.html').read()
         # Add Style with file name
         header_elements = '''</title>
-        <link rel="stylesheet" href="./css/global.css">
         <link rel="stylesheet" href="{0}">
         '''
         file_to_open = file_to_open.replace('</title>', header_elements.format(cssFile))
