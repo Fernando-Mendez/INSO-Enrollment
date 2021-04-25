@@ -16,6 +16,7 @@
   width: 20%;
   height: 40%;
   background-color: white;
+  border-radius: 10px;
 }
 
  .upr-login-form {
@@ -52,6 +53,7 @@
   /* Set a style for all buttons */
   .upr-login-button {
     width: 100%;
+    border-radius: 10px;
     background-color: #0053D3;
     color: #F4F5F7;
     padding: 14px 20px;
@@ -85,21 +87,3 @@
     border-radius: 25%;
   }
   
-
-  
-  /* The "Forgot password" text
-  span.psw {
-    float: right;
-    padding-top: 16px;
-  } */
-  
-  /* Change styles for span and cancel button on extra small screens
-  @media screen and (max-width: 300px) {
-    span.psw {
-      display: block;
-      float: none;
-    }
-    .cancelbtn {
-      width: 100%;
-    }
-  }  */

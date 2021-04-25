@@ -105,6 +105,67 @@ class Serv(BaseHTTPRequestHandler):
             self._set_headers()
             self.wfile.write(bytes(json.dumps(filtered_data),'utf-8'))
 
+        if router_path.endswith('getEnrolledClasses'):
+            with open('data/auth.json') as json_file:
+                data = json.load(json_file)
+                filtered_data = {}
+                for item in data:
+                    if "PEPE" in item['username']:
+                        filtered_data = item['matricula']
+                        break
+            self._set_headers()
+            self.wfile.write(bytes(json.dumps(filtered_data),'utf-8'))
+
+        if router_path.endswith('enrollClass'):
+            length = int(self.headers.get('content-length'))
+            postData = json.loads(self.rfile.read(length))
+            print(postData)
+            # Open file
+            with open('data/auth.json') as json_file:
+                # Get file json
+                data1 = json.load(json_file)
+                matricula = {}
+                for item in data1:
+                    # Check if user is ->
+                    if "PEPE" in item['username']:
+                        matricula = item['matricula']
+                        # If enroll true add the course to matricula
+                        if postData['data']['enroll']:
+                            item['matricula'].append({
+                                "id": postData['data']['courseid'],
+                                "term": postData['data']['term']
+                            })
+                        # Else remoeve from matricula
+                        else: 
+                            for course in item['matricula']:
+                                if postData['data']['courseid'] in course['id']:
+                                    item['matricula'].remove(course)
+            # Save changes in auth
+            with open('data/auth.json', 'w') as outfile:
+                json.dump(data1, outfile, indent=2)
+
+
+            # open cousers to update demand.
+            with open('data/courses.json') as json_file:
+                courseObject = json.load(json_file)
+                for key in courseObject:
+                    if postData['data']['courseid'] in key:
+                        for item in courseObject[key]['demand']:
+                            if postData['data']['term'] in item['term']:
+                                print(item)
+                                if postData['data']['enroll']:
+                                    item['quantity'] += 1
+                                else:
+                                    item['quantity'] += -1
+                                print(item)
+        
+            with open('data/courses.json', 'w') as outfile:
+                json.dump(courseObject, outfile, indent=2)
+           
+
+            self._set_headers()
+            self.wfile.write(bytes(json.dumps( {"matricula": matricula, "courses" : courseObject } ),'utf-8'))
+
         if router_path.endswith('postApproved'):
             length = int(self.headers.get('content-length'))
             postData = json.loads(self.rfile.read(length))
@@ -133,7 +194,7 @@ class Serv(BaseHTTPRequestHandler):
                 
             
             self._set_headers()
-            self.wfile.write(bytes(json.dumps({ "loginSuccesful" : Logged }),'utf-8'))
+            self.wfile.write(bytes(json.dumps({ "loginSuccesful" : Logged, "username" : postData['data']['username'] }),'utf-8'))
          
 
           

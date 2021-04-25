@@ -1,5 +1,13 @@
 let globalCourses;
 let globalCoursesTaken;
+let globalCoursesEnrolled;
+let isLogged = false;
+let username = "";
+
+// Courses Table
+let tbody = document.querySelector("#enrollment-tbody");
+// Curriculum table
+let cbody = document.querySelector("#curriculum-tbody");
 
 // Open Side Menu
 let currButton = document.querySelector(".side-button-curriculum");
@@ -17,38 +25,96 @@ closeButton.addEventListener("click",async ()=>{
 // Dropdown Filter
 let termDropdown = document.querySelector("#semester-dropdown");
 termDropdown.addEventListener("change" , ()=> {
-    const data = tranformToObject(globalCourses);
-    tbody.innerHTML = transformToTableRows(data);
+    console.log(globalCoursesEnrolled);
+    tbody.innerHTML = transformToTableRows(globalCourses);
 })
 
-// Main table 
-let tbody = document.querySelector("#enrollment-tbody");
+
+// Initial Load  
 window.addEventListener("load", async ()=>{
-
         auth()
+})
 
-        // ### LOGIN #####
-        await getAuth();
-
-        // ### END LOGIN #####
-
-        await getCourses();
-
-        await getCurriculum();
-        let checkboxes = document.getElementsByName("curriculum-cb");
-
-        checkboxes.forEach((checkbox)=>{
-            checkbox.addEventListener("change", ()=>{
-                console.log(checkbox.dataset.id, checkbox.checked)
-                postApproved(checkbox.dataset.id, checkbox.checked)
-            })
+// search input filter for course 
+let searchInput = document.querySelector("#search-course-input");
+searchInput.addEventListener("keydown", async (e)=>{
+    if (e.key === "Enter") {
+        const splitted = e.target.value.match(/[a-zA-Z]+|[0-9]+(?:\.[0-9]+)?|\.[0-9]+/g);
+        let response = await fetch("/search", {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer', 
+            body: JSON.stringify({data: splitted})
         })
+
+        let data = await response.json();
+
+        tbody.innerHTML = transformToTableRows(data);
+    }
 })
 
 
-// Curriculum table
-let cbody = document.querySelector("#curriculum-tbody");
-const getCurriculum = async ()=>{
+// ################## Functions ##################
+
+function tranformToObject(data) {
+    return Object.keys(data).map(function (key) {
+        
+        // Using Number() to convert key to number type
+        // Using obj[key] to retrieve key value
+        data[key]['nameid'] = key; 
+        return data[key];
+    });
+}
+function findEnrolledCourse(item) {
+    const founds = globalCoursesEnrolled.filter(i => i.id == item.nameid)
+    let isChecked = false;
+    if (founds) {
+        isChecked = founds.find(i=> i.term == termDropdown.value);
+    }
+    return isChecked;
+}
+function transformToTableRows(data) {
+    var result = tranformToObject(data);
+    let rows = "";
+    result.forEach((item)=>{    
+        rows += `<tr>
+                <td>${item.demand.find(i => i.term == termDropdown.value).quantity}</td>
+                <td>${item.nameid}</td>
+                <td>${item.description}</td>
+                <td>${item.prereq.join(", ")}</td>
+                <td>${item.coreq.join(", ")}</td>
+                <td><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green">
+                    <path
+                    d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z" />
+                </svg>
+                </td>
+                <td> <input type="checkbox" onclick='handleCourseCheckbox(this);' data-id="${item.nameid}" ${ findEnrolledCourse(item) ? "checked":""}> </td>
+            </tr>`;
+    })
+    return rows;
+}
+
+async function getCourses(){
+    let response = await fetch("/search", {
+            method: 'POST', // GET, POST, PUT, DELETE
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow', 
+            referrerPolicy: 'no-referrer', 
+            body: JSON.stringify({data: []})
+        })
+        
+        let data = await response.json();
+
+        globalCourses = data;
+        tbody.innerHTML = transformToTableRows(globalCourses);
+}
+
+async function getCurriculum() {
     let response = await fetch("/curriculum", {
         method: 'POST', // *GET, POST, PUT, DELETE
         headers: {
@@ -90,84 +156,7 @@ const getCurriculum = async ()=>{
 
 }
 
-// search input filter for course 
-let searchInput = document.querySelector("#search-course-input");
-searchInput.addEventListener("keydown", async (e)=>{
-    if (e.key === "Enter") {
-        const splitted = e.target.value.match(/[a-zA-Z]+|[0-9]+(?:\.[0-9]+)?|\.[0-9]+/g);
-        let response = await fetch("/search", {
-            method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            redirect: 'follow',
-            referrerPolicy: 'no-referrer', 
-            body: JSON.stringify({data: splitted})
-        })
-
-        let data = await response.json();
-        var result = tranformToObject(data)
-
-        tbody.innerHTML = transformToTableRows(result);
-    }
-})
-
-
-
-
-
-
-// ################## Functions ##################
-
-function tranformToObject(data) {
-    return Object.keys(data).map(function (key) {
-        
-        // Using Number() to convert key to number type
-        // Using obj[key] to retrieve key value
-        data[key]['nameid'] = key; 
-        return data[key];
-    });
-}
-function transformToTableRows(data) {
-    let rows = "";
-    data.forEach((item)=>{
-        rows += `<tr>
-                <td>${item.demand.find(i => i.term == termDropdown.value).quantity}</td>
-                <td>${item.nameid}</td>
-                <td>${item.description}</td>
-                <td>${item.prereq.join(", ")}</td>
-                <td>${item.coreq.join(", ")}</td>
-                <td><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="green">
-                    <path
-                    d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.393 7.5l-5.643 5.784-2.644-2.506-1.856 1.858 4.5 4.364 7.5-7.643-1.857-1.857z" />
-                </svg>
-                </td>
-                <td> <input type="checkbox"> </td>
-            </tr>`;
-    })
-    return rows;
-}
-
-async function getCourses(){
-    let response = await fetch("/search", {
-        method: 'POST', // GET, POST, PUT, DELETE
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow', 
-        referrerPolicy: 'no-referrer', 
-        body: JSON.stringify({data: []})
-        })
-        
-        let data = await response.json();
-
-        var result = tranformToObject(data);
-
-        globalCourses = data;
-        tbody.innerHTML = transformToTableRows(result);
-}
-
-async function getAuth(){
+async function getAuthCoursesApproved(){
     let response = await fetch("/getAuthData", {
         method: 'POST', // GET, POST, PUT, DELETE
         headers: {
@@ -181,6 +170,22 @@ async function getAuth(){
         let data = await response.json();
 
         globalCoursesTaken = data.courses; 
+}
+
+async function getAuthCoursesEnrolled(){
+    let response = await fetch("/getEnrolledClasses", {
+        method: 'POST', // GET, POST, PUT, DELETE
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer', 
+        body: JSON.stringify({data: []})
+        })
+        
+        let data = await response.json();
+
+        globalCoursesEnrolled = data; 
 }
 
 async function postApproved(courseID, approve){
@@ -198,28 +203,82 @@ async function postApproved(courseID, approve){
 function auth() {
     let LoginForm = document.querySelector("#upr-form-auth");
 
-    LoginForm.addEventListener("submit", async  (e)=>{
-        e.preventDefault();
+    // LoginForm.addEventListener("submit", async  (e)=>{
+    //     e.preventDefault();
 
-        let data = {
-            username:LoginForm.elements["uname"].value,
-            password:LoginForm.elements["psw"].value
-        }
-        
-        let response = await fetch("/login", {
-            method: 'POST', // GET, POST, PUT, DELETE
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            redirect: 'follow', 
-            referrerPolicy: 'no-referrer', 
-            body: JSON.stringify({data: data})
+    //         let data = {
+    //             username:LoginForm.elements["uname"].value,
+    //             password:LoginForm.elements["psw"].value
+    //         }
+            
+    //         let response = await fetch("/login", {
+    //             method: 'POST', // GET, POST, PUT, DELETE
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             redirect: 'follow', 
+    //             referrerPolicy: 'no-referrer', 
+    //             body: JSON.stringify({data: data})
+    //         })
+    
+    //         let parsedResult = await response.json();
+    
+    //         isLogged = parsedResult.loginSuccesful;
+    //         username = parsedResult.username;
+
+    //         if( !isLogged ) {
+    //             alert("Try again! \n Username or password incorrect!")
+    //         }else {
+    //             LoginSuccess();
+    //         }
+       
+    // })
+    LoginSuccess();
+
+}
+
+async function LoginSuccess() {
+    // Remove login 
+    document.getElementById("main-login-container").style.display = "none";
+    document.getElementById("main-page").style.filter = "none";
+
+    await getAuthCoursesApproved();
+
+    await getAuthCoursesEnrolled();
+
+    await getCourses();
+
+    await getCurriculum();
+    let checkboxes = document.getElementsByName("curriculum-cb");
+
+    checkboxes.forEach((checkbox)=>{
+        checkbox.addEventListener("change", ()=>{
+            console.log(checkbox.dataset.id, checkbox.checked)
+            postApproved(checkbox.dataset.id, checkbox.checked)
         })
-
-        let parsedResult = await response.json();
-
-        console.log(parsedResult);
-
     })
 
+}
+
+async function handleCourseCheckbox (e){
+    // globalCoursesEnrolled
+    console.log(e.checked, e.dataset.id)
+    e.disabled = true;
+
+    let response = await fetch("/enrollClass", {
+        method: 'POST', // GET, POST, PUT, DELETE
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({data: {"enroll": e.checked, "courseid": e.dataset.id, "term":  termDropdown.value}})
+    })
+    
+    
+    let data = await response.json();
+    console.log(data);
+
+    globalCoursesEnrolled = data.matricula;
+    globalCourses = data.courses;
+    tbody.innerHTML = transformToTableRows(globalCourses);
+    e.disabled = false;
 }
