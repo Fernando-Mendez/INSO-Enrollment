@@ -93,6 +93,30 @@ class Serv(BaseHTTPRequestHandler):
                         filtered_data[key] = data[key]
             self._set_headers()
             self.wfile.write(bytes(json.dumps(filtered_data),'utf-8'))
+        if router_path.endswith('getAuthData'):
+            with open('data/auth.json') as json_file:
+                data = json.load(json_file)
+                filtered_data = {}
+                for item in data:
+                    if "PEPE" in item['username']:
+                        filtered_data = item['CIIC']
+                        break
+            self._set_headers()
+            self.wfile.write(bytes(json.dumps(filtered_data),'utf-8'))
+        if router_path.endswith('postApproved'):
+            length = int(self.headers.get('content-length'))
+            postData = json.loads(self.rfile.read(length))
+            with open('data/auth.json') as json_file:
+                data = json.load(json_file)
+                print(postData['data'])
+                for item in data:
+                    if "PEPE" in item['username']:
+                        item['CIIC']['courses'][postData['data']['id']] = postData['data']['approve']
+            with open('data/auth.json', 'w') as outfile:
+                json.dump(data, outfile, indent=2)
+            self._set_headers()
+            self.wfile.write(bytes(json.dumps({}),'utf-8'))
+         
 
           
        

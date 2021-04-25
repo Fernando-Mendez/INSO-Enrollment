@@ -1,23 +1,136 @@
+let globalCourses;
+let globalCoursesTaken;
 
-
-// The following code is for opening side menu of the curriculum window
-
+// Open Side Menu
 let currButton = document.querySelector(".side-button-curriculum");
 let sideMenu = document.querySelector(".side-menu-hidden");
 currButton.addEventListener("click",async ()=>{
     sideMenu.classList.toggle("open");
 })
 
+// Close Side Menu
+let closeButton = document.querySelector("#close-button");
+closeButton.addEventListener("click",async ()=>{
+    sideMenu.classList.toggle("open");
+})
+
+// Dropdown Filter
+let termDropdown = document.querySelector("#semester-dropdown");
+termDropdown.addEventListener("change" , ()=> {
+    const data = tranformToObject(globalCourses);
+    tbody.innerHTML = transformToTableRows(data);
+})
+
+// Main table 
+let tbody = document.querySelector("#enrollment-tbody");
+window.addEventListener("load", async ()=>{
+
+        // ### LOGIN #####
+        await getAuth();
+
+        // ### END LOGIN #####
+
+        await getCourses();
+
+        await getCurriculum();
+        let checkboxes = document.getElementsByName("curriculum-cb");
+
+        checkboxes.forEach((checkbox)=>{
+            checkbox.addEventListener("change", ()=>{
+                console.log(checkbox.dataset.id, checkbox.checked)
+                postApproved(checkbox.dataset.id, checkbox.checked)
+            })
+        })
+})
+
+
+// Curriculum table
+let cbody = document.querySelector("#curriculum-tbody");
+const getCurriculum = async ()=>{
+    let response = await fetch("/curriculum", {
+        method: 'POST', // *GET, POST, PUT, DELETE
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer', 
+        })
+        
+        let curriculums = await response.json();
+        let ciicCur = curriculums["CIIC"]; 
+        let myHTML = "";
+        
+        ciicCur.courses.forEach((course)=>{
+            if (course.ID.length == 8){
+                if(globalCourses[course.ID]){
+                    myHTML += `<tr>
+                    <td>${course.term.year}Y${course.term.semester}S</td>
+                    <td>${globalCourses[course.ID].nameid}</td>
+                    <td>${globalCourses[course.ID].description}</td>
+                    <td>${globalCourses[course.ID].prereq.join(", ")}</td>
+                    <td>${globalCourses[course.ID].coreq.join(", ")}</td>
+                    <td><input type="checkbox" name="curriculum-cb" data-id="${course.ID}" ${ globalCoursesTaken[course.ID] ? "checked": ""}> </td>
+                </tr>`;
+                }
+            }
+            else {
+                myHTML += `<tr>
+                        <td> --- </td>
+                        <td> --- </td>
+                        <td>${course.ID} Elective</td>
+                        <td> --- </td>
+                        <td> --- </td>
+                        <td> <input type="checkbox" name="curriculum-cb" data-id="${course.ID}" ${ globalCoursesTaken[course.ID] ? "checked": ""}> </td>
+                    </tr>`
+            }
+        })
+        cbody.innerHTML = myHTML;
+
+}
+
+// search input filter for course 
+let searchInput = document.querySelector("#search-course-input");
+searchInput.addEventListener("keydown", async (e)=>{
+    if (e.key === "Enter") {
+        const splitted = e.target.value.match(/[a-zA-Z]+|[0-9]+(?:\.[0-9]+)?|\.[0-9]+/g);
+        let response = await fetch("/search", {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer', 
+            body: JSON.stringify({data: splitted})
+        })
+
+        let data = await response.json();
+        var result = tranformToObject(data)
+
+        tbody.innerHTML = transformToTableRows(result);
+    }
+})
+
+
+
+
+
+
+// ################## Functions ##################
+
+function tranformToObject(data) {
+    return Object.keys(data).map(function (key) {
+        
+        // Using Number() to convert key to number type
+        // Using obj[key] to retrieve key value
+        data[key]['nameid'] = key; 
+        return data[key];
+    });
+}
 function transformToTableRows(data) {
     let rows = "";
     data.forEach((item)=>{
-        /* if (item.demand. == dropdownTerm){
-
-        }
-        
-        */ 
         rows += `<tr>
-                <td>${item.demand}</td>
+                <td>${item.demand.find(i => i.term == termDropdown.value).quantity}</td>
                 <td>${item.nameid}</td>
                 <td>${item.description}</td>
                 <td>${item.prereq.join(", ")}</td>
@@ -33,116 +146,49 @@ function transformToTableRows(data) {
     return rows;
 }
 
-
-let globalCourses;
-
-let tbody = document.querySelector("#enrollment-tbody");
-window.addEventListener("load", async ()=>{
+async function getCourses(){
     let response = await fetch("/search", {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        method: 'POST', // GET, POST, PUT, DELETE
         headers: {
             'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
         },
-        redirect: 'follow', // manual, *follow, error
+        redirect: 'follow', 
         referrerPolicy: 'no-referrer', 
         body: JSON.stringify({data: []})
         })
         
         let data = await response.json();
 
-        var result = Object.keys(data).map(function (key) {
-        
-            // Using Number() to convert key to number type
-            // Using obj[key] to retrieve key value
-            data[key]['nameid'] = key; 
-            return data[key];
-        });
+        var result = tranformToObject(data);
 
         globalCourses = data;
         tbody.innerHTML = transformToTableRows(result);
-        await getCurriculum();
-})
-
-
-// The following code is for opening side menu of the curriculum window
-let closeButton = document.querySelector("#close-button");
-closeButton.addEventListener("click",async ()=>{
-    sideMenu.classList.toggle("open");
-})
-
-
-
-let cbody = document.querySelector("#curriculum-tbody");
-const getCurriculum = async ()=>{
-
-
-    let response = await fetch("/curriculum", {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-        headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        redirect: 'follow', // manual, *follow, error
-        referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-        // body: JSON.stringify(data) // body data type must match "Content-Type" header
-        })
-        
-        let curriculums = await response.json();
-        let ciicCur = curriculums["CIIC"]; 
-        let myHTML = "";
-        
-        ciicCur.courses.forEach((course, index)=>{
-            // console.log("object:", course);
-
-            if (course.ID.length == 8){
-                if(globalCourses[course.ID]){
-                    myHTML += `<tr>
-                    <td>${course.term.year}Y${course.term.semester}S</td>
-                    <td>${globalCourses[course.ID].nameid}</td>
-                    <td>${globalCourses[course.ID].description}</td>
-                    <td>${globalCourses[course.ID].prereq.join(", ")}</td>
-                    <td>${globalCourses[course.ID].coreq.join(", ")}</td>
-                    <td><input type="checkbox"> </td>
-                </tr>`;
-                }
-            }
-            else {
-                myHTML += `<tr>
-                        <td> --- </td>
-                        <td> --- </td>
-                        <td>${course.ID} Elective</td>
-                        <td> --- </td>
-                        <td> --- </td>
-                        <td> <input type="checkbox"> </td>
-                    </tr>`
-            }
-        })
-        cbody.innerHTML = myHTML;
-
 }
 
-let searchInput = document.querySelector("#search-course-input");
-
-searchInput.addEventListener("keydown", async (e)=>{
-    if (e.key === "Enter") {
-        const splitted = e.target.value.match(/[a-zA-Z]+|[0-9]+(?:\.[0-9]+)?|\.[0-9]+/g);
-        let response = await fetch("/search", {
-            method: 'POST', 
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            redirect: 'follow',
-            referrerPolicy: 'no-referrer', 
-            body: JSON.stringify({data: splitted})
+async function getAuth(){
+    let response = await fetch("/getAuthData", {
+        method: 'POST', // GET, POST, PUT, DELETE
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer', 
+        body: JSON.stringify({data: []})
         })
-
+        
         let data = await response.json();
-        var result = Object.keys(data).map(function (key) {
-            data[key]['nameid'] = key; 
-            return data[key];
-        });
 
-        tbody.innerHTML = transformToTableRows(result);
-    }
-})
+        globalCoursesTaken = data.courses; 
+}
+
+async function postApproved(courseID, approve){
+    await fetch("/postApproved", {
+        method: 'POST', // GET, POST, PUT, DELETE
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer', 
+        body: JSON.stringify({data: {id: courseID, approve: approve}})
+    })
+}
